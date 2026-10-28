@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ماموریت ریاضی | ۱۰ مرحله</title>
+<style>
+:root{--cyan:#52f2e3;--pink:#ff5bbd;--gold:#ffd36b;--ink:#f7f5ff;--muted:#c5c4e8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Tahoma,Arial,sans-serif;color:var(--ink);background:radial-gradient(ellipse at 15% 10%,#41318a,transparent 34%),radial-gradient(ellipse at 90% 80%,#123e68,transparent 38%),linear-gradient(135deg,#090d25,#101333 60%,#081a32)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:37px 37px}
+.wrap{max-width:900px;margin:auto;padding:24px 16px 45px}.top,.meta,.actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{color:var(--cyan);font-size:13px}.pill{border:1px solid #ffffff25;border-radius:99px;padding:9px 14px;color:var(--muted);font-size:13px}
+h1{font-size:clamp(32px,6vw,54px);margin:22px 0 8px;text-shadow:0 4px #111536}h1 span{color:var(--cyan)}.sub,.hint{color:var(--muted);line-height:1.9}
+.hud{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;margin:22px 0}.track{height:12px;background:#ffffff14;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--cyan));transition:width .4s}.score{color:var(--gold);font-weight:bold}
+.card{background:linear-gradient(145deg,#202653ef,#131936f5);border:1px solid #ffffff24;border-radius:25px;padding:clamp(18px,4vw,34px);box-shadow:0 18px 0 #070b20,0 30px 60px #0008,inset 0 1px #ffffff20;position:relative;overflow:hidden}
+.tag{background:#52f2e31a;border:1px solid #52f2e34d;color:var(--cyan);border-radius:10px;padding:7px 10px;font-size:13px}.meta{color:var(--muted);font-size:13px}
+.question{font-size:clamp(21px,4vw,29px);line-height:1.9;margin:24px 0}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.choice{font:inherit;color:var(--ink);text-align:right;cursor:pointer;padding:16px;border-radius:16px;border:1px solid #ffffff26;background:linear-gradient(145deg,#303762,#1b2148);box-shadow:0 6px #0b102d;min-height:64px;line-height:1.8}.choice:hover:not(:disabled){transform:translateY(-2px);border-color:var(--cyan)}.choice:disabled{cursor:default}.choice.correct{background:linear-gradient(135deg,#146a61,#164b58);border-color:var(--cyan)}.choice.wrong{background:linear-gradient(135deg,#7c284f,#482347);border-color:var(--pink)}
+.letter{display:inline-grid;place-items:center;width:29px;height:29px;margin-left:8px;border-radius:9px;background:#ffffff14;color:var(--cyan)}
+.feedback{display:none;margin-top:20px;padding:15px;border-radius:15px;line-height:1.9;background:#ffffff0b;border:1px solid #ffffff1b}.feedback.show{display:block}.feedback.good{border-color:#52f2e36b}.feedback.bad{border-color:#ff5bbd6b}.actions{margin-top:22px}
+.btn{font:inherit;font-weight:bold;cursor:pointer;border:0;border-radius:13px;padding:13px 20px;color:#10152f;background:linear-gradient(135deg,var(--cyan),#9fffe5);box-shadow:0 5px #248b91}.btn:disabled{opacity:.35;cursor:not-allowed}
+.input{width:100%;font:inherit;color:var(--ink);background:#101735;border:1px solid #ffffff35;border-radius:13px;padding:14px;margin:7px 0 15px;outline:none}.input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #52f2e322}.start{max-width:580px;margin:30px auto;text-align:right}.start h2{color:var(--gold);text-align:center}.start .btn{width:100%}.error{color:#ff8acb;min-height:22px}
+.overlay{position:fixed;inset:0;z-index:5;background:#070a1bdc;backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px}.overlay.show{display:flex}.modal{width:min(520px,100%);text-align:center;background:linear-gradient(145deg,#242c5b,#141a3b);border:1px solid #ffffff32;border-radius:25px;padding:25px;box-shadow:0 20px #06091a,0 35px 80px #000a;animation:pop .3s ease-out}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.portrait{width:125px;height:125px;margin:auto auto 12px;border-radius:50%;border:4px solid var(--gold);overflow:hidden;background:#383b72;display:grid;place-items:center;font-size:68px}.modal h2{color:var(--gold)}.person{color:var(--cyan);font-size:13px}.modal p{line-height:1.9}.quote{font-size:20px;font-weight:bold}
+.final{display:none;text-align:center}.final.show{display:block}.final h2{font-size:34px;color:var(--gold)}.hidden{display:none!important}
+@media(max-width:600px){.choices{grid-template-columns:1fr}.hud{grid-template-columns:1fr}.score{justify-self:start}}
+</style></head>
+<body><div class="wrap">
+<div class="top"><div class="brand">✦ آکادمی ماجراجویی ذهن ✦</div><div class="pill">🎮 بازی آنلاین · ۱۰ مرحله</div></div>
+<h1>ماموریت <span>ریاضی</span></h1><p class="sub">۱۰ مرحله برای باز کردن قفل کهکشان اعداد! نامت را وارد کن، پاسخ درست بده و امتیاز جمع کن.</p>
+<section class="card start" id="startScreen"><h2>🚀 آمادهٔ شروع مأموریت هستی؟</h2><p class="hint">برای ثبت نتیجه، نام و نام خانوادگی‌ات را وارد کن.</p>
+<label for="firstName">نام</label><input class="input" id="firstName" autocomplete="given-name" placeholder="مثلاً سارا">
+<label for="lastName">نام خانوادگی</label><input class="input" id="lastName" autocomplete="family-name" placeholder="مثلاً احمدی">
+<div class="error" id="startError" aria-live="polite"></div><button class="btn" id="startBtn">شروع بازی 🎮</button></section>
+<div id="playArea" class="hidden"><div class="hud"><div><div class="track"><div class="fill" id="progress"></div></div><div class="hint" id="progressText">مرحله ۱ از ۱۰</div></div><div class="score">⭐ امتیاز: <span id="score">۰</span></div></div>
+<main id="game"><section class="card"><div class="meta"><span class="tag" id="topic"></span><span id="level"></span></div><div class="question" id="question"></div><div class="choices" id="choices"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><span class="hint" id="status">یک گزینه را انتخاب کن.</span><button class="btn" id="next" disabled>مرحله بعد ←</button></div></section></main><section class="card final" id="final"></section></div>
+<p class="hint" style="text-align:center;margin-top:24px">ساخته‌شده برای کنجکاوی، تمرین و لذت کشف ✨</p></div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true"><div class="modal"><div class="portrait" id="portrait">🧠</div><div class="person" id="personRole"></div><h2 id="modalTitle"></h2><p class="quote" id="cheer"></p><p id="personFact"></p><button class="btn" id="continue">ادامه مأموریت 🚀</button></div></div>
+<script>
+const questions=[
+{t:"قرینه",q:"عدد (۳−) را ۱۴۰۵ بار قرینه کرده‌ایم. حاصل کدام گزینه است؟",a:["۳+","۳−","۱۴۰۵+","۱۴۰۱+"],c:0,e:"قرینه‌گیری فرد بار، عدد را به قرینهٔ آن تبدیل می‌کند؛ قرینهٔ ۳− برابر ۳+ است."},
+{t:"اعداد صحیح و بردار",q:"کدام‌یک از جمله‌های زیر صحیح است؟",a:["قرینهٔ همهٔ اعداد صحیح از خود عدد بزرگ‌تر است.","۴۵ درجه در جهت عقربه‌های ساعت را با عدد ۴۵+ درجه نمایش می‌دهیم.","بردار (۲−) یعنی ۲ واحد به سمت چپ.","صفر عددی صحیح نیست."],c:2,e:"بردار ۲− یعنی ۲ واحد به سمت چپ؛ این جمله درست است. صفر هم در واقع یک عدد صحیح است."},
+{t:"میانگین دما",q:"دمای شهر تهران ۳ درجه زیر صفر و دمای شهر اصفهان ۵ درجه بالای صفر است. میانگین دمای دو شهر چند درجه است؟",a:["۲ درجه","۲− درجه","۱− درجه","۱+ درجه"],c:3,e:"میانگین برابر است با (۳− + ۵+) ÷ ۲ = ۲ ÷ ۲ = ۱+ درجه."},
+{t:"محور اعداد",q:"مورچه‌ای روی محور اعداد ۱۰ واحد به سمت چپ رفت و به نقطهٔ ۵− رسید. این مورچه در ابتدا در کدام نقطه قرار داشت؟",a:["۲−","۵+","۳+","۳−"],c:1,e:"اگر با حرکت ۱۰ واحد به چپ به ۵− برسیم، نقطهٔ شروع ۵+ است."},
+{t:"اعداد صحیح",q:"ثلثِ یک عدد صحیح، ۴ واحد کمتر از عدد ۹− است. آن عدد کدام است؟",a:["۳۹+","۲۷+","۳۹−","۲۷−"],c:2,e:"ثلث عدد برابر ۹−−۴=۱۳− است؛ پس عدد برابر ۳×(۱۳−)=۳۹− می‌شود."},
+{t:"قرینه و تفریق",q:"اگر قرینهٔ کوچک‌ترین عدد صحیح یک‌رقمی منفی را A و قرینهٔ بزرگ‌ترین عدد صحیح دورقمی منفی را B بنامیم، حاصل A−B کدام است؟",a:["۱۹+","۱+","۱۹−","۱−"],c:3,e:"کوچک‌ترین عدد صحیح یک‌رقمی منفی ۹− است، پس A=۹+. بزرگ‌ترین عدد صحیح دورقمی منفی ۱۰− است، پس B=۱۰+. بنابراین A−B=۹−۱۰=۱−."},
+{t:"سرعت و زمان",q:"خرگوشی فاصلهٔ ۲− تا ۱۰+ را در ۳۶ ثانیه طی کرد. اگر با سرعت ثابت از ۱۷+ تا ۲۰+ حرکت کند، چند ثانیه طول می‌کشد؟",a:["۹ ثانیه","۳۴ ثانیه","۱۲ ثانیه","۶۰ ثانیه"],c:0,e:"فاصلهٔ اول ۱۲ واحد و فاصلهٔ دوم ۳ واحد است. زمان متناسب با فاصله است؛ ۳۶×۳÷۱۲=۹ ثانیه."},
+{t:"محور اعداد",q:"اگر از نقطهٔ ۵۰+ شروع کنیم و با ۸ جهش به نقطهٔ ۷۰− برسیم، طول هر جهش چقدر است؟",a:["۱۰/۴","۱۰","۲۵/۴","۱۵"],c:3,e:"فاصلهٔ دو نقطه ۱۲۰ واحد است؛ ۱۲۰÷۸=۱۵ واحد برای هر جهش."},
+{t:"قرینه",q:"فاصلهٔ هر عدد تا قرینه‌اش کدام است؟",a:["صفر","دو برابر فاصلهٔ آن عدد تا مبدأ","۳ برابر آن عدد","برابر فاصلهٔ آن عدد تا مبدأ"],c:1,e:"قرینهٔ هر عدد در طرف دیگر مبدأ و به همان فاصله از مبدأ قرار دارد؛ بنابراین فاصلهٔ عدد تا قرینه‌اش دو برابر فاصلهٔ آن عدد تا مبدأ است."},
+{t:"عبارت‌های عددی",q:"حاصل قرینهٔ عبارت [۱۲−۴+] کدام گزینه است؟",a:["۸+","۸−","۱۶+","۱۶−"],c:0,e:"حاصل عبارت بالا ۸− است، بنابراین قرینهٔ آن ۸+ است."}
+];
+const people=[
+["مریم میرزاخانی","ریاضی‌دان ایرانی · ۱۹۷۷–۲۰۱۷","او نخستین زنی بود که مدال فیلدز را دریافت کرد. پژوهش‌هایش به هندسه و سطوح پیچیده مربوط بود.","📐"],
+["آدا لاولیس","پیشگام محاسبات · ۱۸۱۵–۱۸۵۲","او الگوریتمی برای ماشین تحلیلی نوشت و از پیشگامان برنامه‌نویسی به شمار می‌رود.","💻"],
+["کارل فریدریش گاوس","ریاضی‌دان آلمانی · ۱۷۷۷–۱۸۵۵","گاوس در نظریهٔ اعداد، آمار و هندسه دستاوردهای ماندگاری داشت.","➗"],
+["ابوالوفا بوزجانی","ریاضی‌دان و اخترشناس ایرانی · ۹۴۰–۹۹۸","او در گسترش مثلثات و کاربردهای هندسی آن نقش مهمی داشت.","🌙"],
+["امّا نوتر","ریاضی‌دان آلمانی · ۱۸۸۲–۱۹۳۵","قضیهٔ نوتر پیوندی بنیادی میان تقارن‌ها و قوانین پایستگی برقرار می‌کند.","♾️"],
+["فیثاغورس","فیلسوف و ریاضی‌دان یونان باستان","قضیهٔ مشهور منسوب به او رابطهٔ میان ضلع‌های مثلث قائم‌الزاویه را بیان می‌کند.","📏"],
+["لئونارد اویلر","ریاضی‌دان سوئیسی · ۱۷۰۷–۱۷۸۳","دستاوردهای او در تحلیل ریاضی، نظریهٔ گراف و نظریهٔ اعداد هنوز کاربرد دارند.","∑"],
+["محمد بن موسی خوارزمی","دانشمند ایرانی سدهٔ نهم","واژهٔ الگوریتم از صورت لاتین‌شدهٔ نام او گرفته شده و آثارش در جبر تأثیرگذار بود.","✍️"],
+["کاترین جانسون","ریاضی‌دان آمریکایی · ۱۹۱۸–۲۰۲۰","محاسبات دقیق مداری او به موفقیت مأموریت‌های فضایی ناسا کمک کرد.","🚀"],
+["مریم میرزاخانی","الهام‌بخش نسل‌های آینده","کنجکاوی و پشتکار او یادآوری می‌کند که پرسیدن سؤال‌های دشوار، بخشی از زیبایی ریاضیات است.","✨"]
+],cheers=["عالی بود! ذهنت یک قدم جلوتر رفت!","درخشان! همین‌طور ادامه بده!","آفرین، قفل این مرحله را باز کردی!","فوق‌العاده‌ست؛ منطق تو جواب داد!","چه حل‌کنندهٔ مسئله‌ای! 🚀"];
+const fa=n=>String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);let index=0,score=0,answered=false,playerName="";
+const $=id=>document.getElementById(id);
+$("startBtn").onclick=()=>{const first=$("firstName").value.trim(),last=$("lastName").value.trim();if(!first||!last){$("startError").textContent="لطفاً نام و نام خانوادگی را هر دو وارد کن.";return}playerName=first+" "+last;$("startScreen").classList.add("hidden");$("playArea").classList.remove("hidden");render()};
+function render(){let q=questions[index];answered=false;$("topic").textContent=q.t;$("level").textContent="مرحله "+fa(index+1)+" / ۱۰";$("progressText").textContent="مرحله "+fa(index+1)+" از ۱۰";$("progress").style.width=(index*10)+"%";$("question").textContent=q.q;$("choices").innerHTML="";$("feedback").className="feedback";$("feedback").textContent="";$("status").textContent="یک گزینه را انتخاب کن.";$("next").disabled=true;$("next").textContent=index===9?"دیدن نتیجه نهایی ←":"مرحله بعد ←";q.a.forEach((ans,i)=>{let b=document.createElement("button");b.className="choice";b.innerHTML='<span class="letter">'+["الف","ب","ج","د"][i]+"</span>"+ans;b.onclick=()=>choose(i,b);$("choices").appendChild(b)})}
+function choose(i,btn){if(answered)return;answered=true;let q=questions[index],bs=Array.from($("choices").children),fb=$("feedback");bs.forEach(b=>b.disabled=true);if(i===q.c){score+=10;btn.classList.add("correct");fb.className="feedback show good";fb.innerHTML="<strong>✅ پاسخ درست است!</strong><br>"+q.e;$("status").textContent="۱۰ امتیاز گرفتی!";$("score").textContent=fa(score);showPerson()}else{btn.classList.add("wrong");bs[q.c].classList.add("correct");fb.className="feedback show bad";fb.innerHTML="<strong>هنوز نه؛ تلاش خوبی بود.</strong><br>"+q.e;$("status").textContent="پاسخ درست مشخص شد؛ از آن یاد بگیر."}$("next").disabled=false;$("progress").style.width=((index+1)*10)+"%"}
+function showPerson(){let p=people[index];$("portrait").textContent=p[3];$("personRole").textContent=p[1];$("modalTitle").textContent=p[0];$("cheer").textContent=cheers[index%cheers.length];$("personFact").textContent=p[2];$("overlay").classList.add("show")}
+$("continue").onclick=()=>$("overlay").classList.remove("show");$("next").onclick=()=>{if(!answered)return;if(index<9){index++;render()}else finish()};
+function finish(){$("game").classList.add("hidden");$("final").classList.add("show");$("progress").style.width="100%";let msg=score>=80?"تو یک ستارهٔ واقعی ریاضی هستی!":score>=50?"پیشرفتت عالی است؛ چند تمرین دیگر و می‌درخشی!":"هر پاسخ، یک قدم یادگیری بود. دوباره بازی کن و رکوردت را بهتر کن!";$("final").innerHTML='<div style="font-size:55px">🏆</div><h2>ماموریت تمام شد!</h2><p><strong>'+playerName+'</strong>، تبریک می‌گوییم!</p><p>امتیاز کل تو:</p><p><strong style="color:var(--cyan);font-size:34px">'+fa(score)+' از ۱۰۰</strong></p><p>پاسخ‌های درست: '+fa(score/10)+' از ۱۰</p><p>'+msg+'</p><button class="btn" id="restart">شروع دوباره ↻</button>';$("restart").onclick=()=>{index=0;score=0;$("score").textContent="۰";$("game").classList.remove("hidden");$("final").classList.remove("show");render()}}
+</script></body></html>
